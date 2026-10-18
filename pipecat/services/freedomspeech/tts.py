@@ -93,7 +93,7 @@ class FreedomSpeechTTSService(WebsocketTTSService):
         self,
         *,
         api_key: str,
-        base_url: str = "wss://freedomspeech.kz",
+        base_url: str = "wss://api.freedomspeech.kz",
         sample_rate: int | None = None,
         settings: Settings | None = None,
         **kwargs,
@@ -102,7 +102,7 @@ class FreedomSpeechTTSService(WebsocketTTSService):
 
         Args:
             api_key: Freedom Speech API key.
-            base_url: WebSocket base URL. Defaults to ``wss://freedomspeech.kz``.
+            base_url: WebSocket base URL. Defaults to ``wss://api.freedomspeech.kz``.
             sample_rate: Output sample rate. The server produces 24 kHz; other
                 values are resampled by the pipeline.
             settings: Runtime-updatable settings (``voice``, ``model``,

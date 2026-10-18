@@ -73,7 +73,7 @@ def test_default_settings_and_url():
     assert service._settings.model == "freedomspeech"
     assert service._settings.language is None
     assert service._settings.prettify is True
-    assert service._ws_url() == "wss://freedomspeech.kz/ws/asr?apiKey=test-key"
+    assert service._ws_url() == "wss://api.freedomspeech.kz/ws/asr?apiKey=test-key"
 
 
 def test_prettify_false_goes_to_query():
@@ -196,7 +196,7 @@ async def test_connect_waits_for_ready_frame():
 
     assert service._websocket is ws
     url = service._websocket_connect.call_args.args[0]
-    assert url == "wss://freedomspeech.kz/ws/asr?apiKey=test-key"
+    assert url == "wss://api.freedomspeech.kz/ws/asr?apiKey=test-key"
     service._call_event_handler.assert_awaited_with("on_connected")
 
 

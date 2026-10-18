@@ -69,7 +69,7 @@ def test_defaults():
     assert service._settings.emotion is None
     # setup() copies this into sample_rate; before setup only the init value is known
     assert service._init_sample_rate == FREEDOMSPEECH_TTS_SAMPLE_RATE
-    assert service._ws_url() == "wss://freedomspeech.kz/ws/tts?apiKey=test-key"
+    assert service._ws_url() == "wss://api.freedomspeech.kz/ws/tts?apiKey=test-key"
 
 
 def test_settings_language_enum_is_converted():
@@ -219,5 +219,5 @@ async def test_connect_uses_api_key_query():
     await service._connect_websocket()
 
     assert service._websocket is ws
-    assert service._websocket_connect.call_args.args[0] == "wss://freedomspeech.kz/ws/tts?apiKey=test-key"
+    assert service._websocket_connect.call_args.args[0] == "wss://api.freedomspeech.kz/ws/tts?apiKey=test-key"
     service._call_event_handler.assert_awaited_with("on_connected")

@@ -104,7 +104,7 @@ class FreedomSpeechSTTService(WebsocketSTTService):
         self,
         *,
         api_key: str,
-        base_url: str = "wss://freedomspeech.kz",
+        base_url: str = "wss://api.freedomspeech.kz",
         sample_rate: int | None = None,
         settings: Settings | None = None,
         keepalive_timeout: float | None = DEFAULT_KEEPALIVE_TIMEOUT_S,
@@ -114,7 +114,7 @@ class FreedomSpeechSTTService(WebsocketSTTService):
 
         Args:
             api_key: Freedom Speech API key.
-            base_url: WebSocket base URL. Defaults to ``wss://freedomspeech.kz``.
+            base_url: WebSocket base URL. Defaults to ``wss://api.freedomspeech.kz``.
             sample_rate: Pipeline audio sample rate in Hz. Audio is resampled to
                 16 kHz before sending because the server accepts only that rate.
             settings: Runtime-updatable settings (``prettify``, ``language``).

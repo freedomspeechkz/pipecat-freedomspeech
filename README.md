@@ -5,6 +5,8 @@
 - `FreedomSpeechSTTService` (`WebsocketSTTService`): `WS /ws/asr`, вход PCM16 16 кГц моно (другая частота пайплайна пересэмплируется), `partial` -> `InterimTranscriptionFrame`, `final` -> `TranscriptionFrame` с языком от сервера. `VADUserStoppedSpeakingFrame` отправляет `{"type": "stop"}`, чтобы сервер закрыл фразу. Тишина-keepalive каждые 8 с без аудио, потому что сервер закрывает сокет после 15 с без аудио. Настройка `prettify` (форматирование сущностей, чисел, дат) меняет query сокета и ведёт к переподключению.
 - `FreedomSpeechTTSService` (`WebsocketTTSService`): `WS /ws/tts`, модель `freedomspeech-flash` по умолчанию, `audio_chunk` (base64 PCM16 24 кГц) -> `TTSAudioRawFrame`, `audio_end` закрывает контекст. `requestId` запроса равен `context_id` pipecat, контекст на каждый `run_tts` (`reuse_context_id_within_turn=False`), прерывание шлёт `{"type": "cancel"}`. Настройки: `voice`, `model`, `language`, `emotion` (у flash эмоции и теги пока не подключены).
 
+Ключ из кабинета console.freedomspeech.kz работает на https://api.freedomspeech.kz, это адрес по умолчанию (`base_url="wss://api.freedomspeech.kz"`) с 18.10.2026; оба сервиса ходят только на `WS /ws/asr` и `WS /ws/tts`, которые там опубликованы.
+
 ## Структура
 
 ```
